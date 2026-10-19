@@ -1,13 +1,21 @@
-# Team Project
-
-Please keep this up-to-date with information about your project throughout the term.
-
+# Trigger Warning
 The readme should include information such as:
-- a summary of what your application is all about
-- a list of the user stories, along with who is responsible for each one
 - information about the API(s) that your project uses 
 - screenshots or animations demonstrating current functionality
 
-By keeping this README up-to-date,
-your team will find it easier to prepare for the final presentation
-at the end of the term.
+## About the Project
+Trigger Warning is an app that provides users with warnings of when a potential trigger may happen in a piece of media, for example a movie or a book. It allows users to input triggers they have encountered, read others' warnings, and upload a book or movie transcript and read/watch it with in-built skips for their chosen triggers.
+
+## User Stories
+### _Sarina_
+- user stories here
+### _Joseph_
+- user stories here
+### _Wenxiao_
+- user stories here
+### _Catherine_
+- user stories here
+### _Emirhan_
+- user stories here
+### _Toby_
+- user stories here
