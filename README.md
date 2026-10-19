@@ -14,7 +14,8 @@ Trigger Warning is an app that provides users with warnings of when a potential 
 ### _Wenxiao_
 - user stories here
 ### _Catherine_
-- user stories here
+- As a viewer, I want to see a single consolidated warning for each trigger event so that I can understand what happens without having to read multiple reports of the same event.
+- As a viewer, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
 ### _Emirhan_
 - user stories here
 ### _Toby_
