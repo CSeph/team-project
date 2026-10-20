@@ -8,7 +8,11 @@ Trigger Warning is an app that provides users with warnings of when a potential 
 
 ## User Stories
 ### _Sarina_
-- user stories here
+- Main Focus: Personalized Trigger Profile ~ As a user, I want to set up my personal trigger account profile so that the content I watch and/or read reflects my audio/visual preferences.
+  - As a user, I want to view the list of triggers that are currently available by category so that I can select which triggers I want to filter out.
+  - As a user, I want to set severity thresholds for each of my selected trigger so that the app can suggest relevant content that meets my chosen level of sensitivity.
+  - As a user, I want to select how the app should respond to each trigger warning so that when a trigger occurs it is handled appropriately. 
+  - As a user, I want to be able to make changes to my trigger profile so that the media I watch/read aligns with my current mood and preferences.
 ### _Joseph_
 - user stories here
 ### _Wenxiao_
