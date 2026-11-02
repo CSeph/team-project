@@ -29,7 +29,9 @@ The readme should include information such as:
 - As a user, I want to submit a trigger warning for a selected piece of media so that I can help other users know when potentially difficult content occurs.
 - As a user, I want to create a community trigger category when none of the existing categories accurately describe the content I want to report, so that I can submit a more accurate trigger warning.
 ### _Catherine_
-- user stories here
+- As a user, I want to see a single consolidated warning for each trigger event so that I can understand what happens without having to read multiple reports of the same event.
+- As a user, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
+- As a user, I want to provide feedback on trigger warnings so that I can help improve their accuracy and reliability for other users.
 ### _Emirhan_
 - user stories here
 ### _Toby_
