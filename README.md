@@ -3,9 +3,19 @@ The readme should include information such as:
 - information about the API(s) that your project uses 
 - screenshots or animations demonstrating current functionality
 
-## About the Project
-Trigger Warning is an app that provides users with warnings of when a potential trigger may happen in a piece of media, for example a movie or a book. It allows users to input triggers they have encountered, read others' warnings, and upload a book or movie transcript and read/watch it with in-built skips for their chosen triggers.
-
+## Team Information
+### Team Members
+- Sarina
+- Joseph
+- Wenxiao
+- Catherine
+- Emirhan
+- Toby
+---
+## Project Description
+### Domain
+- Trigger Warning is an app that provides users with warnings of when a potential trigger may happen in a piece of media, for example a movie or a book. It allows users to input triggers they have encountered, read others' warnings, and upload a book or movie transcript and read/watch it with in-built skips for their chosen triggers.
+---
 ## User Stories
 ### _Sarina_
 - Main Focus: Personalized Trigger Profile ~ As a user, I want to set up my personal trigger account profile so that the content I watch and/or read reflects my audio/visual preferences.
@@ -24,3 +34,37 @@ Trigger Warning is an app that provides users with warnings of when a potential 
 - user stories here
 ### _Toby_
 - user stories here
+(Add additional user stories as needed.)
+---
+## Use Cases
+### Use Case 1
+### Use Case 2
+### Use Case 3
+(Add additional use cases as needed.)
+---
+## Minimal Viable Product (MVP)
+| Team Member | MVP Use Case |
+|-------------|--------------|
+| Name | Use Case |
+| Name | Use Case |
+| Name | Use Case |
+---
+## Entities
+### Entity 1
+### Entity 2
+(Add additional entities as needed.)
+---
+## API Usage
+**API Name:**
+**Documentation:** [Link]
+**How it is used in the program:**
+---
+## Design Diagrams
+### UML Class Diagram
+### Sequence Diagrams
+---
+## How to Run
+[Instructions for running the program.]
+---
+## Notes
+[Any additional project information.]
