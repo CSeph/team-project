@@ -42,14 +42,19 @@ The readme should include information such as:
 ### Use Case 1
 ### Use Case 2
 ### Use Case 3
-(Add additional use cases as needed.)
+### Use Case 4
+### Use Case 5
+### Use Case 6
 ---
 ## Minimal Viable Product (MVP)
 | Team Member | MVP Use Case |
 |-------------|--------------|
-| Name | Use Case |
-| Name | Use Case |
-| Name | Use Case |
+| Sarina | Use Case 1 |
+| Joseph | Use Case 2 |
+| Wenxiao | Use Case 3 |
+| Catherine | Use Case 4 |
+| Emirhan | Use Case 5 |
+| Toby | Use Case 6 |
 ---
 ## Entities
 ### Entity 1
