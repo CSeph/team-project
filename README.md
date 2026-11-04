@@ -70,6 +70,32 @@ The readme should include information such as:
   1. The system returns an empty collection of warnings.
   2. The system informs the user that no trigger warnings are currently available.
   3. The use case ends.
+
+### Use Case: Submit Trigger Warning Feedback
+
+**Primary actor:** User providing feedback
+
+**Preconditions:**
+- The user is viewing a consolidated trigger warning.
+- The selected warning exists in the system.
+
+**Trigger:** The user chooses to provide feedback on a consolidated trigger warning.
+
+**Success outcome:** The user's feedback is recorded and associated with the selected consolidated trigger warning.
+
+**Main success scenario:**
+1. The user chooses to provide feedback on a trigger warning.
+2. The system presents the available feedback options.
+3. The user indicates whether the warning is accurate.
+4. If the user indicates that the warning is inaccurate, the user may select a reason for their feedback.
+5. The user submits their feedback.
+6. The system records the feedback.
+7. The system confirms that the feedback was submitted.
+
+**Extensions:**
+- **5a.** The system cannot record the feedback.
+  1. The system informs the user that the feedback could not be submitted and that they may try again.
+  2. The use case ends without recording the feedback.
 ### Use Case 5
 ### Use Case 6
 ---
@@ -80,6 +106,7 @@ The readme should include information such as:
 | Joseph | Use Case 2 |
 | Wenxiao | Use Case 3 |
 | Catherine | View and Review Consolidated Trigger Warnings |
+| Catherine | Submit Trigger Warning Feedback |
 | Emirhan | Use Case 5 |
 | Toby | Use Case 6 |
 ---
