@@ -98,6 +98,7 @@ The readme should include information such as:
   2. The use case ends without recording the feedback.
 ### Use Case 5
 ### Use Case 6
+
 ---
 ## Minimal Viable Product (MVP)
 | Team Member | MVP Use Case |
