@@ -42,7 +42,34 @@ The readme should include information such as:
 ### Use Case 1
 ### Use Case 2
 ### Use Case 3
-### Use Case 4
+### Use Case: View and Review Consolidated Trigger Warnings
+
+**Primary actor:** User viewing the selected media
+
+**Preconditions:**
+- The user has searched for and selected a piece of media.
+- The selected media's page is loading.
+- Trigger reports associated with the selected media are available in the system.
+
+**Trigger:** The selected media's page begins loading.
+
+**Success outcome:** The system returns and displays the latest consolidated trigger warnings, including their descriptions, timestamps, confidence scores, and contributing reports.
+
+**Main success scenario:**
+1. The system retrieves the available trigger reports and previously stored consolidated warnings for the selected media.
+2. The system checks whether the stored consolidated warnings are up to date with the available reports.
+3. If the stored warnings are outdated, the system consolidates the reports and recalculates the confidence scores.
+4. The system saves the updated consolidated warnings and confidence scores.
+5. The system returns the latest consolidated warnings and confidence scores.
+6. The system displays the warnings in a timeline.
+7. The user selects a warning to inspect it.
+8. The system displays the individual reports contributing to the selected warning.
+
+**Extensions:**
+- **1a.** No trigger reports are available for the selected media.
+  1. The system returns an empty collection of warnings.
+  2. The system informs the user that no trigger warnings are currently available.
+  3. The use case ends.
 ### Use Case 5
 ### Use Case 6
 ---
@@ -52,7 +79,7 @@ The readme should include information such as:
 | Sarina | Use Case 1 |
 | Joseph | Use Case 2 |
 | Wenxiao | Use Case 3 |
-| Catherine | Use Case 4 |
+| Catherine | View and Review Consolidated Trigger Warnings |
 | Emirhan | Use Case 5 |
 | Toby | Use Case 6 |
 ---
@@ -75,3 +102,4 @@ The readme should include information such as:
 ---
 ## Notes
 [Any additional project information.]
+
