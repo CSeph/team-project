@@ -31,7 +31,7 @@ The readme should include information such as:
 ### _Catherine_
 - As a user, I want to see a single consolidated warning for each trigger event so that I can understand what happens without having to read multiple reports of the same event.
 - As a user, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
-- As a user, I want to provide feedback on trigger warnings so that I can help improve their accuracy and reliability for other users.
+- As a user, I want to submit feedback on the accuracy of a trigger warning so that I can help improve the reliability of warnings for other users.
 ### _Emirhan_
 - user stories here
 ### _Toby_
