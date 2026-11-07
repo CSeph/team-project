@@ -39,7 +39,105 @@ The readme should include information such as:
 (Add additional user stories as needed.)
 ---
 ## Use Cases
-### Use Case 1
+### Use Case: Viewing and Selecting Current Trigger Categories Available
+**Primary actor:** User is viewing the trigger categories in their profile setting.
+
+**Preconditions:**
+- The user is logged into their account.
+- User is looking through their profile settings. 
+- Trigger categories are listed and viewable.
+
+**Trigger:** The user is navigating through trigger categories section of profile.
+
+**Success outcome:** The system is able to display the categorized triggers that the user can select/deselect from.
+
+**Main success scenario:** 
+1. The user is editing his/her/their trigger profile section.
+2. The system retrieves the different categorized trigger and displays it.
+3. The user is able to select and deselect triggers to their preference. 
+4. The system saves the changes to the user's profile.
+
+**Extensions:**
+- **3a.** User has no changes they want to make or undo their changes.
+  1. The system retains previous profile settings, disregarding unsaved changes.
+  2. The use case ends with the existing profile remaining unchanged.
+- **5a.** The system could not save any changes.
+  1. The system informs the user that the change could not be saved. (Ex. This could be due to connection issue.)
+  2. The user can try again.
+
+### Use Case: Viewing and Setting Severity Thresholds for Each Selected Trigger
+**Primary actor:** User wants to adjust certain trigger's severity thresholds in their profile setting.
+
+**Preconditions:**
+- The user is logged into their account.
+- User is looking through their profile settings.
+- User selects a trigger.
+
+**Trigger:** The user is navigating and configuring a trigger's threshold section of profile.
+
+**Success outcome:** The system is make changes to the user's preferred threshold for the selected trigger.
+
+**Main success scenario:**
+1. The user is editing his/her/their threshold for a trigger in profile section.
+2. The user is able to drag/select a preferred threshold. 
+3. The system displays and saves the changes to the user's profile.
+
+**Extensions:**
+- **1a.** No trigger is selected to be edited.
+  1. The system prompts user to select a trigger to edit before configuring the new severity level threshold.
+  2. The use case ends.
+
+### Use Case: Viewing and Modifying Trigger Warning Response
+**Primary actor:** User is viewing a selected trigger's warning response in profile setting.
+
+**Preconditions:**
+- The user is logged into their account.
+- User is looking through their profile settings.
+- User selected a trigger.
+
+**Trigger:** The user selects how to the system should respond to the trigger.
+
+**Success outcome:** The system is able to save the preferred warning response to the trigger.
+
+**Main success scenario:**
+1. The user is editing his/her/their trigger profile section.
+2. The system retrieves pre-saved warning response of the selected trigger and displays it.
+3. The user can make changes, selecting to how the system should respond to the trigger.
+4. The system saves the changes to the user's profile.
+
+**Extensions:**
+- **1a.** No trigger is selected to be edited.
+  1. The system prompts user to select a trigger to edit before configuring the new severity level threshold.
+  2. The use case ends.
+- **3a.** The user does not choose a warning response to the trigger.
+  1. The system prompts the user to choose a warning response from a list.
+  2. The user re-selects or cancel changes.
+  
+### Use Case: User Creates/Signs Up for an Account 
+**Primary actor:** User creating a personalized trigger profile for the first time.
+
+**Preconditions:**
+- The user is logged in for the first time given they do not have an existing account already created.
+- The profile settings from trigger categories, thresholds, and response options are configured.
+
+**Trigger:** The user clicks on register/create a Trigger profile account.
+
+**Success outcome:** The user's personalized profile is created and saved (i.e. username, password, selected triggers, preferred trigger warning response and thresholds)
+
+**Main success scenario:** 
+1. The user able to create a unique username and password. 
+2. The system presents the available trigger warnings, responses, and threshold adjustments. 
+3. The user can select and filter out triggers to their preference, assigning thresholds to each selected trigger.
+4. The system retains/saves the user's preferences. 
+5. The system displays the user's profile settings.
+
+**Extensions:**
+- **3a.** User does not select any adjustments to their trigger warning preferences.
+  1. The system informs user to fill out each section of the trigger profile.
+- **5a.** User decides not to make an account and deletes unsaved profile.
+  1. The system does not save the profile. It deletes the profile content.
+  2. The use case ends.
+  
 ### Use Case 2
 ### Use Case 3
 ### Use Case: View and Review Consolidated Trigger Warnings
@@ -103,7 +201,10 @@ The readme should include information such as:
 ## Minimal Viable Product (MVP)
 | Team Member | MVP Use Case |
 |-------------|--------------|
-| Sarina | Use Case 1 |
+| Sarina | Viewing and Selecting Current Trigger Categories Available |
+| Sarina | Viewing and Setting Severity Thresholds for Each Selected Trigger |
+| Sarina | Viewing and Modifying Trigger Warning Response |
+| Sarina | User Creates an Account |
 | Joseph | Use Case 2 |
 | Wenxiao | Use Case 3 |
 | Catherine | View and Review Consolidated Trigger Warnings |
