@@ -37,6 +37,7 @@ The readme should include information such as:
 ### _Toby_
 - As a user, I would like to choose from a spectrum of existing trigger warnings to create personalized content safety
 - As a user, I want to conveniently access my preferences in triggers selection
+- As a user, I want the warnings shown for a selected movie or book to reflect my saved trigger preferences.
 
 (Add additional user stories as needed.)
 ---
@@ -195,10 +196,30 @@ The readme should include information such as:
   1. The system informs the user that the feedback could not be submitted and that they may try again.
   2. The use case ends without recording the feedback.
 
-### Use Case 7
+### Use Case 7 View media warnings based on my saved preferences
+Prerequisite: Saved trigger preferences and selected a movie or book.
+INTENDED STEPS TO OUTCOME:
+1. The system retrieves the user’s saved preferences.
+2. The system retrieves the selected media’s consolidated warnings.
+3. The system matches the warnings against the selected trigger categories and any applicable thresholds.
+4. The system displays matching warnings with their available locations, descriptions, and confidence scores.
+5. The user selects a warning to inspect its details.
+EXCEPTIONS:
+- The database has no matching trigger warnings
+- The movie selected has no trigger warnings attached
+- Retrieval fails and offers retry or cancellation
 
-
-### Use Case 8
+### Use Case 8 Browsing Triggers
+1. The system retrieves the available trigger categories and the user’s saved selections.
+2. The system displays categories with names and descriptions, marking those already selected.
+3. The user browses or searches the categories—for example, searching “animals” to find “Animal harm.”
+4. The user selects or deselects categories.
+5. The user chooses “Save.”
+6. The system saves the selection and confirms success.
+EXCEPTIONS:
+- A search finds no matching categories. The system displays an empty result and lets the user change the search.
+- The user cancels. The system discards the unsaved changes.
+- Saving fails. The system explains the failure and keeps the pending selections available for retry.
 
 ---
 ## Minimal Viable Product (MVP)
