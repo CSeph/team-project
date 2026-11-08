@@ -35,11 +35,13 @@ The readme should include information such as:
 ### _Emirhan_
 - user stories here
 ### _Toby_
-- user stories here
+- As a user, I would like to choose from a spectrum of existing trigger warnings to create personalized content safety
+- As a user, I want to conveniently access my preferences in triggers selection
+
 (Add additional user stories as needed.)
 ---
 ## Use Cases
-### Use Case: Viewing and Selecting Current Trigger Categories Available
+### Use Case 1: Viewing and Selecting Current Trigger Categories Available
 **Primary actor:** User is viewing the trigger categories in their profile setting.
 
 **Preconditions:**
@@ -65,7 +67,7 @@ The readme should include information such as:
   1. The system informs the user that the change could not be saved. (Ex. This could be due to connection issue.)
   2. The user can try again.
 
-### Use Case: Viewing and Setting Severity Thresholds for Each Selected Trigger
+### Use Case 2: Viewing and Setting Severity Thresholds for Each Selected Trigger
 **Primary actor:** User wants to adjust certain trigger's severity thresholds in their profile setting.
 
 **Preconditions:**
@@ -87,7 +89,7 @@ The readme should include information such as:
   1. The system prompts user to select a trigger to edit before configuring the new severity level threshold.
   2. The use case ends.
 
-### Use Case: Viewing and Modifying Trigger Warning Response
+### Use Case 3: Viewing and Modifying Trigger Warning Response
 **Primary actor:** User is viewing a selected trigger's warning response in profile setting.
 
 **Preconditions:**
@@ -113,7 +115,7 @@ The readme should include information such as:
   1. The system prompts the user to choose a warning response from a list.
   2. The user re-selects or cancel changes.
   
-### Use Case: User Creates/Signs Up for an Account 
+### Use Case 4: User Creates/Signs Up for an Account 
 **Primary actor:** User creating a personalized trigger profile for the first time.
 
 **Preconditions:**
@@ -137,10 +139,8 @@ The readme should include information such as:
 - **5a.** User decides not to make an account and deletes unsaved profile.
   1. The system does not save the profile. It deletes the profile content.
   2. The use case ends.
-  
-### Use Case 2
-### Use Case 3
-### Use Case: View and Review Consolidated Trigger Warnings
+
+### Use Case 5: View and Review Consolidated Trigger Warnings
 
 **Primary actor:** User viewing the selected media
 
@@ -169,7 +169,7 @@ The readme should include information such as:
   2. The system informs the user that no trigger warnings are currently available.
   3. The use case ends.
 
-### Use Case: Submit Trigger Warning Feedback
+### Use Case 6: Submit Trigger Warning Feedback
 
 **Primary actor:** User providing feedback
 
@@ -194,8 +194,11 @@ The readme should include information such as:
 - **5a.** The system cannot record the feedback.
   1. The system informs the user that the feedback could not be submitted and that they may try again.
   2. The use case ends without recording the feedback.
-### Use Case 5
-### Use Case 6
+
+### Use Case 7
+
+
+### Use Case 8
 
 ---
 ## Minimal Viable Product (MVP)
