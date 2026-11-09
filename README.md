@@ -35,11 +35,10 @@ The readme should include information such as:
 ### _Emirhan_
 - user stories here
 ### _Toby_
-- As a user, I would like to choose from a spectrum of existing trigger warnings to create personalized content safety
+- As a user, I want to choose from a spectrum of existing trigger warnings to create personalized content safety
 - As a user, I want to conveniently access my preferences in triggers selection
 - As a user, I want the warnings shown for a selected movie or book to reflect my saved trigger preferences.
 
-(Add additional user stories as needed.)
 ---
 ## Use Cases
 ### Use Case 1: Viewing and Selecting Current Trigger Categories Available
@@ -196,30 +195,99 @@ The readme should include information such as:
   1. The system informs the user that the feedback could not be submitted and that they may try again.
   2. The use case ends without recording the feedback.
 
-### Use Case 7 View media warnings based on my saved preferences
-Prerequisite: Saved trigger preferences and selected a movie or book.
-INTENDED STEPS TO OUTCOME:
-1. The system retrieves the user’s saved preferences.
-2. The system retrieves the selected media’s consolidated warnings.
-3. The system matches the warnings against the selected trigger categories and any applicable thresholds.
-4. The system displays matching warnings with their available locations, descriptions, and confidence scores.
-5. The user selects a warning to inspect its details.
-EXCEPTIONS:
-- The database has no matching trigger warnings
-- The movie selected has no trigger warnings attached
-- Retrieval fails and offers retry or cancellation
+### Use Case 7: Browse and Save Trigger Preferences
 
-### Use Case 8 Browsing Triggers
-1. The system retrieves the available trigger categories and the user’s saved selections.
-2. The system displays categories with names and descriptions, marking those already selected.
-3. The user browses or searches the categories—for example, searching “animals” to find “Animal harm.”
+**Primary actor:** User selecting trigger preferences
+
+**Preconditions:**
+- The user is logged into their account.
+  Trigger: The user chooses to browse and configure their trigger preferences.
+
+**Success outcome:** The user’s selected trigger categories are saved to their profile.
+
+**Main success scenario:**
+1. The user opens the trigger preferences section.
+2. The system displays available trigger categories and descriptions, marking any previously saved selections.
+3. The user browses or searches the categories.
 4. The user selects or deselects categories.
-5. The user chooses “Save.”
-6. The system saves the selection and confirms success.
-EXCEPTIONS:
-- A search finds no matching categories. The system displays an empty result and lets the user change the search.
-- The user cancels. The system discards the unsaved changes.
-- Saving fails. The system explains the failure and keeps the pending selections available for retry.
+5. The user chooses to save their preferences.
+6. The system saves the selections.
+7. The system confirms that the preferences were saved.
+
+**Extensions:**
+- 2a. The system cannot retrieve the categories or saved preferences.
+  1. The system informs the user that the information could not be loaded.
+  2. The user may retry or cancel.
+- 3a. A search finds no matching categories.
+  1. The system displays an empty result.
+  2. The user may change their search.
+- 5a. The user cancels without saving.
+  1. The system discards unsaved changes.
+  2. The use case ends with the previously saved preferences unchanged.
+- 6a. The system cannot save the selections.
+  1. The system informs the user that saving failed.
+  2. The system retains the pending selections so the user can retry.
+
+### Use Case 8: View Saved Trigger Preferences
+
+**Primary actor:** User reviewing their trigger preferences
+
+**Preconditions:**
+- The user is logged into their account.
+  Trigger: The user chooses to view their saved trigger preferences.
+
+**Success outcome:** The user can review their currently saved trigger selections and associated settings.
+
+**Main success scenario:**
+1. The user opens their saved trigger preferences.
+2. The system retrieves the user’s saved selections and associated settings.
+3. The system displays the selected trigger categories and their settings.
+4. The user reviews their preferences.
+
+**Extensions:**
+- 2a. The user has no saved preferences.
+  1. The system informs the user that no preferences have been saved.
+  2. The system offers the option to configure trigger preferences.
+- 2b. The system cannot retrieve the saved preferences.
+  1. The system informs the user that the preferences could not be loaded.
+  2. The user may retry or cancel.
+- 4a. The user chooses to change their trigger selections.
+  1. The system starts the Browse and Save Trigger Preferences use case.
+
+### Use Case 9: View Media Warnings Based on Saved Preferences
+
+**Primary actor: User viewing personalized media warnings**
+
+**Preconditions:**
+- The user is logged into their account.
+- The user has saved trigger preferences.
+- The user has selected a movie or book.
+  Trigger: The user chooses to view personalized trigger warnings for the selected media.
+
+**Success outcome:** The system displays the available warnings that match the user’s saved trigger preferences.
+
+**Main success scenario:**
+1. The user requests personalized warnings for the selected media.
+2. The system retrieves the user’s saved trigger preferences.
+3. The system retrieves the selected media’s consolidated warnings.
+4. The system matches the warnings against the selected trigger categories and any applicable severity thresholds.
+5. The system displays matching warnings with their available locations, descriptions, and confidence scores.
+6. The user selects a warning to inspect.
+7. The system displays the selected warning’s details.
+
+**Extensions:**
+- 2a. The system cannot retrieve the user’s preferences.
+  1. The system informs the user that their preferences could not be loaded.
+  2. The user may retry or cancel.
+- 3a. No warnings are available for the selected media.
+  1. The system informs the user that no trigger warnings are currently available.
+  2. The use case ends.
+- 3b. The system cannot retrieve the media’s warnings.
+  1. The system informs the user that the warnings could not be loaded.
+  2. The user may retry or cancel.
+- 4a. None of the available warnings match the saved preferences.
+  1. The system informs the user that no available warnings match their preferences, without implying that the media is free of triggering content.
+  2. The use case ends.
 
 ---
 ## Minimal Viable Product (MVP)
