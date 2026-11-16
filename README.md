@@ -302,7 +302,8 @@ The readme should include information such as:
 | Catherine | View and Review Consolidated Trigger Warnings |
 | Catherine | Submit Trigger Warning Feedback |
 | Emirhan | Use Case 5 |
-| Toby | Use Case 6 |
+| Toby | Browse Trigger Preferences |
+| Toby | Save Trigger Preferences |
 ---
 ## Entities
 ### Entity 1
