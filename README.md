@@ -288,6 +288,89 @@ The readme should include information such as:
 - 4a. None of the available warnings match the saved preferences.
   1. The system informs the user that no available warnings match their preferences, without implying that the media is free of triggering content.
   2. The use case ends.
+### Use Case 10: Submit Trigger Warning
+
+**Primary actor:** User submitting a trigger warning
+
+**Preconditions:**
+
+- The user has searched for and selected a piece of media.
+- The selected media exists in the system.
+- The system has a list of available trigger categories.
+
+**Trigger:** The user chooses to submit a trigger warning for the selected media.
+
+**Success outcome:** The user's trigger warning is successfully recorded and associated with the selected media, making it available for consolidation and display to other users.
+
+**Main success scenario:**
+
+1. The user selects the option to add a trigger warning for the selected media.
+2. The system displays a trigger warning submission form.
+3. The system displays the available trigger categories.
+4. The user selects a trigger category.
+5. The user enters the relevant information, including the start and end timestamps (when applicable), a description of the triggering content, and its severity level.
+6. The user submits the trigger warning.
+7. The system validates the submitted information.
+8. The system saves the trigger warning and associates it with the selected media.
+9. The system confirms that the trigger warning was successfully submitted.
+
+**Extensions:**
+
+- **4a.** No existing trigger category accurately describes the content.
+  1. The user chooses to create a new community trigger category.
+  2. The system initiates the Create Community Trigger Category use case.
+  3. After successfully creating the category, the user returns to the submission form and selects the new category.
+
+- **7a.** The submitted information is incomplete or invalid.
+  1. The system informs the user which information is missing or invalid.
+  2. The user corrects the information and resubmits the form.
+
+- **8a.** The system cannot save the trigger warning.
+  1. The system informs the user that the submission was unsuccessful.
+  2. The user may retry or cancel.
+  3. If the user cancels, the use case ends without recording the warning.
+
+---
+
+### Use Case 11: Create Community Trigger Category
+
+**Primary actor:** User creating a community trigger category
+
+**Preconditions:**
+
+- The user has access to the available trigger categories.
+- The existing categories do not accurately describe the triggering content the user wants to report.
+
+**Trigger:** The user chooses to create a new community trigger category.
+
+**Success outcome:** A new community trigger category is successfully created and becomes available for selection when submitting trigger warnings.
+
+**Main success scenario:**
+
+1. The user selects the option to create a new trigger category.
+2. The system displays a form for creating a community trigger category.
+3. The user enters a category name and description.
+4. The user submits the new category.
+5. The system validates the submitted information.
+6. The system checks whether a category with the same name already exists.
+7. The system saves the new category as a community-created category.
+8. The system confirms that the category was successfully created.
+9. The new category becomes available for selection when submitting trigger warnings.
+
+**Extensions:**
+
+- **5a.** The category name or description is missing or invalid.
+  1. The system informs the user of the missing or invalid information.
+  2. The user corrects the information and resubmits the form.
+
+- **6a.** A category with the same name already exists.
+  1. The system informs the user that the category already exists.
+  2. The user may select the existing category or enter a different name.
+
+- **7a.** The system cannot save the new category.
+  1. The system informs the user that the category could not be created.
+  2. The user may retry or cancel.
+  3. If the user cancels, the use case ends without creating the category.
 
 ---
 ## Minimal Viable Product (MVP)
