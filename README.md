@@ -323,5 +323,6 @@ The readme should include information such as:
 [Instructions for running the program.]
 ---
 ## Notes
+Link to Slides: https://docs.google.com/presentation/d/17c_46VmWSpbKd_MX34flg0v0Y5wzYPyVLOiRjhtNk8g/edit?usp=sharing
 [Any additional project information.]
 
