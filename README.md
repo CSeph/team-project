@@ -324,5 +324,6 @@ The readme should include information such as:
 ---
 ## Notes
 Link to Slides: https://docs.google.com/presentation/d/17c_46VmWSpbKd_MX34flg0v0Y5wzYPyVLOiRjhtNk8g/edit?usp=sharing
+Link to Figma: https://www.figma.com/design/lfOflhqLBI4IXYdahOSp75/CSC207?node-id=0-1&t=gU9uKzAxIxzfKBMN-1
 [Any additional project information.]
 
