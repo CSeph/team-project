@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 
 public class KeywordTriggerDetector implements TriggerDetector {
@@ -35,7 +36,7 @@ public class KeywordTriggerDetector implements TriggerDetector {
 
                 for (String word : words) {
 
-                    if (text.contains(word.toLowerCase(Locale.ROOT))) {
+                    if (containsWholeWord(text, word.toLowerCase(Locale.ROOT))) {
                         detections.add(new TriggerDetection(category, segment, word, KEYWORD_CONFIDENCE));
                     }
                 }
@@ -43,6 +44,12 @@ public class KeywordTriggerDetector implements TriggerDetector {
             }
         }
         return detections;
+    }
+
+    private boolean containsWholeWord(String text, String word) {
+        String regex = "\\b" + Pattern.quote(word) + "\\b";
+
+        return Pattern.compile(regex).matcher(text).find();
     }
 
 }
