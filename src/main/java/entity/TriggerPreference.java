@@ -6,7 +6,7 @@ public final class TriggerPreference {
 
     private final TriggerCategory category;
     private final String severityThreshold;
-    private final String warningResponse
+    private final String warningResponse;
 
     public TriggerPreference(TriggerCategory category, TriggerSeverity severityThreshold, WarningResponse warningResponse) {
         if (category == null) {
