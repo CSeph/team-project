@@ -47,8 +47,9 @@ The readme should include information such as:
 
 ------
 ## Use Cases
-Use cases are grouped by team member, following the numbering in the app sketch legend:
-1) Sarina 2) Seph 3) Toby 4) Catherine 5) Emirhan 6) Wenxiao
+Use cases are grouped by team member, following the numbering in the app sketch legend: 
+
+(1) Sarina (2) Seph (3) Toby (4) Catherine (5) Emirhan (6) Wenxiao
 
 ## 1) Sarina — My Account & Edit Profile Settings
 
@@ -561,8 +562,10 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 ---
 ## How to Run
 [Instructions for running the program.]
+
 ---
 ## Notes
 Link to Slides: https://docs.google.com/presentation/d/17c_46VmWSpbKd_MX34flg0v0Y5wzYPyVLOiRjhtNk8g/edit?usp=sharing
 Link to Figma: https://www.figma.com/design/lfOflhqLBI4IXYdahOSp75/CSC207?node-id=0-1&t=gU9uKzAxIxzfKBMN-1
+
 [Any additional project information.]
