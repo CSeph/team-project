@@ -2,7 +2,7 @@ package data_access;
 
 
 import entity.CaptionSegment;
-import use_case.analyze.CaptionSource;
+import use_case.analysize.CaptionSource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package use_case.analyze;
+package use_case.analysize;
 
 
 import entity.CaptionSegment;
