@@ -1,7 +1,7 @@
-package interface_adapter.login;
+package interface_adapter.account.login;
 
-import use_case.login.LoginInputBoundary;
-import use_case.login.LoginInputData;
+import use_case.account.login.LoginInputBoundary;
+import use_case.account.login.LoginInputData;
 
 /**
  * The controller for the Login Use Case.

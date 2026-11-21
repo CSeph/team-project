@@ -1,48 +1,35 @@
 package interface_adapter.account.login;
 
-import interface_adapter.ViewManagerModel;
-import interface_adapter.account.logged_in.LoggedInState;
-import interface_adapter.account.logged_in.LoggedInViewModel;
-import use_case.login.LoginOutputBoundary;
-import use_case.login.LoginOutputData;
-
 /**
- * The Presenter for the Login Use Case.
+ * The state for the Login View Model.
  */
-public class LoginPresenter implements LoginOutputBoundary {
+public class LoginState {
+    private String username = "";
+    private String loginError;
+    private String password = "";
 
-    private final LoginViewModel loginViewModel;
-    private final LoggedInViewModel loggedInViewModel;
-    private final ViewManagerModel viewManagerModel;
-
-    public LoginPresenter(ViewManagerModel viewManagerModel,
-                          LoggedInViewModel loggedInViewModel,
-                          LoginViewModel loginViewModel) {
-        this.viewManagerModel = viewManagerModel;
-        this.loggedInViewModel = loggedInViewModel;
-        this.loginViewModel = loginViewModel;
+    public String getUsername() {
+        return username;
     }
 
-    @Override
-    public void prepareSuccessView(LoginOutputData response) {
-        // On success, update the loggedInViewModel's state
-        final LoggedInState loggedInState = loggedInViewModel.getState();
-        loggedInState.setUsername(response.getUsername());
-        this.loggedInViewModel.notifyStateChanged();
-
-        // and clear everything from the LoginViewModel's state
-        this.loginViewModel.setState(new LoginState());
-        this.loginViewModel.notifyStateChanged();
-
-        // switch to the logged in view
-        this.viewManagerModel.setState(LoggedInViewModel.VIEW_NAME);
-        this.viewManagerModel.notifyViewChanged();
+    public String getLoginError() {
+        return loginError;
     }
 
-    @Override
-    public void prepareFailView(String error) {
-        final LoginState loginState = loginViewModel.getState();
-        loginState.setLoginError(error);
-        loginViewModel.notifyStateChanged();
+    public String getPassword() {
+        return password;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setLoginError(String usernameError) {
+        this.loginError = usernameError;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

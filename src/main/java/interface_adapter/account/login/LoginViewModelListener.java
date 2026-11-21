@@ -1,4 +1,4 @@
-package interface_adapter.login;
+package interface_adapter.account.login;
 
 public interface LoginViewModelListener {
 

@@ -1,10 +1,10 @@
-package interface_adapter.login;
+package interface_adapter.account.login;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.logged_in.LoggedInState;
-import interface_adapter.logged_in.LoggedInViewModel;
-import use_case.login.LoginOutputBoundary;
-import use_case.login.LoginOutputData;
+import interface_adapter.account.logged_in.LoggedInState;
+import interface_adapter.account.logged_in.LoggedInViewModel;
+import use_case.account.login.LoginOutputBoundary;
+import use_case.account.login.LoginOutputData;
 
 /**
  * The Presenter for the Login Use Case.
