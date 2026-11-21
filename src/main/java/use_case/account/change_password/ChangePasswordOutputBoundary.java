@@ -1,4 +1,4 @@
-package use_case.change_password;
+package use_case.account.change_password;
 
 /**
  * The output boundary for the Change Password Use Case.

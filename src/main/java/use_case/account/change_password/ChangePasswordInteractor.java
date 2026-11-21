@@ -1,7 +1,7 @@
-package use_case.change_password;
+package use_case.account.change_password;
 
-import entity.User;
-import entity.UserFactory;
+import entity.account.User;
+import entity.account.UserFactory;
 
 /**
  * The Change Password Interactor.
