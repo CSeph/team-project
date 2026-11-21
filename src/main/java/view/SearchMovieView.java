@@ -11,9 +11,11 @@ import java.util.function.Consumer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
@@ -34,7 +36,7 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
     private static final int GRID_COLUMNS = 4;
     private static final int GAP = 10;
     private static final int SEARCH_COLUMNS = 24;
-    private static final Color ERROR_COLOR = new Color(180, 30, 30);
+    private static final Color ERROR_COLOR = new Color(177, 28, 28);
 
     private final SearchMovieViewModel viewModel;
 
@@ -42,7 +44,9 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
     private final JButton searchButton = new JButton("Search");
     private final JButton profileButton = new JButton("My Profile");
     private final JButton uploadButton = new JButton("+ Upload Media");
-    private final JComboBox<String> genreBox = new JComboBox<>();
+    private final JButton genreButton = new JButton("Genres: Any \u25BE");
+    private final JPopupMenu genreMenu = new JPopupMenu();
+    private final List<JCheckBox> genreChecks = new ArrayList<>();
     private final JComboBox<String> yearBox = new JComboBox<>();
     private final JComboBox<String> ratingBox = new JComboBox<>();
     private final JButton clearFiltersButton = new JButton("Clear filters");
@@ -102,8 +106,7 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
 
     private JPanel buildFilterBar() {
         final JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
-        bar.add(labelFor("Genre:", genreBox));
-        bar.add(genreBox);
+        bar.add(genreButton);
         bar.add(labelFor("Year:", yearBox));
         bar.add(yearBox);
         bar.add(labelFor("Min rating:", ratingBox));
@@ -119,7 +122,6 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
     }
 
     private void fillStaticFilterOptions() {
-        genreBox.addItem(ANY);
         yearBox.addItem(ANY);
         for (int year = NEWEST_YEAR; year >= OLDEST_YEAR; year--) {
             yearBox.addItem(String.valueOf(year));
@@ -133,12 +135,16 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
     private void wireActions() {
         searchButton.addActionListener(event -> runSearch());
         searchField.addActionListener(event -> runSearch());
-        genreBox.addActionListener(event -> rerunIfSearched());
+        genreButton.addActionListener(
+                event -> genreMenu.show(genreButton, 0, genreButton.getHeight()));
         yearBox.addActionListener(event -> rerunIfSearched());
         ratingBox.addActionListener(event -> rerunIfSearched());
         clearFiltersButton.addActionListener(event -> {
             updatingFilters = true;
-            genreBox.setSelectedItem(ANY);
+            for (JCheckBox check : genreChecks) {
+                check.setSelected(false);
+            }
+            updateGenreButtonText();
             yearBox.setSelectedItem(ANY);
             ratingBox.setSelectedItem(ANY);
             updatingFilters = false;
@@ -162,16 +168,29 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
         if (searchMovieController == null) {
             return;
         }
-        searchMovieController.execute(searchField.getText(), selectedGenre(),
+        searchMovieController.execute(searchField.getText(), selectedGenres(),
                 selectedYear(), selectedMinRating());
     }
 
-    private String selectedGenre() {
-        final Object choice = genreBox.getSelectedItem();
-        if (choice == null || ANY.equals(choice)) {
-            return null;
+    private List<String> selectedGenres() {
+        final List<String> genres = new ArrayList<>();
+        for (JCheckBox check : genreChecks) {
+            if (check.isSelected()) {
+                genres.add(check.getText());
+            }
         }
-        return choice.toString();
+        return genres;
+    }
+
+    private void updateGenreButtonText() {
+        final List<String> genres = selectedGenres();
+        if (genres.isEmpty()) {
+            genreButton.setText("Genres: Any \u25BE");
+        }
+        else {
+            genreButton.setText("Genres (" + genres.size() + ") \u25BE");
+        }
+        genreButton.setToolTipText(genres.isEmpty() ? null : String.join(", ", genres));
     }
 
     private Integer selectedYear() {
@@ -214,16 +233,20 @@ public class SearchMovieView extends JPanel implements SearchMovieViewModelListe
         if (genres.equals(shownGenres)) {
             return;
         }
-        updatingFilters = true;
-        final Object selected = genreBox.getSelectedItem();
-        genreBox.removeAllItems();
-        genreBox.addItem(ANY);
+        final List<String> stillSelected = selectedGenres();
+        genreMenu.removeAll();
+        genreChecks.clear();
         for (String genre : genres) {
-            genreBox.addItem(genre);
+            final JCheckBox check = new JCheckBox(genre, stillSelected.contains(genre));
+            check.addActionListener(event -> {
+                updateGenreButtonText();
+                rerunIfSearched();
+            });
+            genreChecks.add(check);
+            genreMenu.add(check);
         }
-        genreBox.setSelectedItem(selected == null ? ANY : selected);
         shownGenres = new ArrayList<>(genres);
-        updatingFilters = false;
+        updateGenreButtonText();
     }
 
     private void showMessage(String message, boolean isError) {

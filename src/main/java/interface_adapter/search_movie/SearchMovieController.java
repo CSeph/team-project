@@ -22,10 +22,13 @@ public class SearchMovieController {
         execute(query, null, null, null);
     }
 
-    public void execute(String query, String genre, Integer releaseYear, Double minRating) {
+    public void execute(String query, List<String> genres, Integer releaseYear,
+                        Double minRating) {
         final List<MovieFilter> filters = new ArrayList<>();
-        if (genre != null && !genre.isBlank()) {
-            filters.add(new GenreFilter(genre));
+        if (genres != null) {
+            for (String genre : genres) {
+                filters.add(new GenreFilter(genre));
+            }
         }
         if (releaseYear != null) {
             filters.add(new ReleaseYearFilter(releaseYear));

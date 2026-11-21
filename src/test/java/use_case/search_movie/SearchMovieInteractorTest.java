@@ -69,6 +69,14 @@ class SearchMovieInteractorTest {
     }
 
     @Test
+    void severalGenresKeepOnlyMoviesWithAllOfThem() {
+        interactor.execute(input("scream",
+                new GenreFilter("Horror"), new GenreFilter("Thriller")));
+
+        assertEquals(List.of("3"), presenter.resultIds());
+    }
+
+    @Test
     void releaseYearFilterKeepsOnlyThatYear() {
         interactor.execute(input("scream", new ReleaseYearFilter(2022)));
 
