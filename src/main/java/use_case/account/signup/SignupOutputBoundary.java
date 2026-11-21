@@ -1,4 +1,4 @@
-package use_case.signup;
+package use_case.account.signup;
 
 /**
  * The output boundary for the Signup Use Case.

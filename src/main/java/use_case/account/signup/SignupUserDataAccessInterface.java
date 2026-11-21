@@ -1,6 +1,6 @@
-package use_case.signup;
+package use_case.account.signup;
 
-import entity.User;
+import entity.account.User;
 
 /**
  * DAO interface for the Signup Use Case.
