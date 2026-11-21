@@ -1,10 +1,10 @@
-package interface_adapter.signup;
+package interface_adapter.account.signup;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.login.LoginState;
-import interface_adapter.login.LoginViewModel;
-import use_case.signup.SignupOutputBoundary;
-import use_case.signup.SignupOutputData;
+import interface_adapter.account.login.LoginState;
+import interface_adapter.account.login.LoginViewModel;
+import use_case.account.signup.SignupOutputBoundary;
+import use_case.account.signup.SignupOutputData;
 
 /**
  * The Presenter for the Signup Use Case.

@@ -1,4 +1,4 @@
-package interface_adapter.signup;
+package interface_adapter.account.signup;
 
 /**
  * The state for the Signup View Model.

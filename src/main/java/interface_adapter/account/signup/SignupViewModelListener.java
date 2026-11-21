@@ -1,4 +1,4 @@
-package interface_adapter.signup;
+package interface_adapter.account.signup;
 
 public interface SignupViewModelListener {
 

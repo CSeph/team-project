@@ -1,4 +1,4 @@
-package interface_adapter.signup;
+package interface_adapter.account.signup;
 
 import java.util.ArrayList;
 import java.util.List;
