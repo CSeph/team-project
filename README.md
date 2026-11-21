@@ -53,7 +53,7 @@ Use cases are grouped by team member, following the numbering in the app sketch 
 
 ## 1) Sarina — My Account & Edit Profile Settings
 
-### Use Case 1: User Creates/Signs Up for an Account 
+### Use Case 1: Create Account 
 **Primary actor:** User creating a personalized trigger profile for the first time.
 
 **Preconditions:**
@@ -78,9 +78,7 @@ Use cases are grouped by team member, following the numbering in the app sketch 
   1. The system does not save the profile. It deletes the profile content.
   2. The use case ends.
 
-### Use Case 2: Log In to an Account
-_(Draft based on the "My Account" page in the app sketch — Sarina to confirm.)_
-
+### Use Case 2: Login to an Account
 **Primary actor:** User with an existing account
 
 **Preconditions:**
@@ -109,83 +107,48 @@ _(Draft based on the "My Account" page in the app sketch — Sarina to confirm.)
   1. The system informs the user that the login information is incorrect.
   2. The user may try again.
 
-### Use Case 3: Viewing and Selecting Current Trigger Categories Available
-**Primary actor:** User is viewing the trigger categories in their profile setting.
+### Use Case 3: Edit Trigger Profile Settings
+**Primary actor:** User wants to edit his/her/their trigger profile.
 
 **Preconditions:**
 - The user is logged into their account.
-- User is looking through their profile settings. 
-- Trigger categories are listed and viewable.
+- User has looked through their profile settings and selected to edit that section of their profile.
+- The system has a list of available/viewable trigger categories and their associated settings (i.e. severity threshold and warning response for each trigger).
 
-**Trigger:** The user is navigating through trigger categories section of profile.
+**Trigger:** The user has navigated through the trigger profile and selected to make edits to his/her/their trigger preferences.
 
-**Success outcome:** The system is able to display the categorized triggers that the user can select/deselect from.
+**Success outcome:** The system is able to display the updated trigger profile.
 
-**Main success scenario:** 
-1. The user is editing his/her/their trigger profile section.
-2. The system retrieves the different categorized trigger and displays it.
-3. The user is able to select and deselect triggers to their preference. 
-4. The system saves the changes to the user's profile.
+**Main success scenario:**
+1. The user navigates to the trigger profile settings page. 
+2. The system retrieves and displays the available trigger categories and identifies the triggers currently selected in the user's profile. 
+3. The user selects or deselects triggers according to their preferences. 
+4. The user selects an individual trigger to configure its settings. 
+5. The system retrieves and displays the previously saved severity threshold and warning response for the selected trigger. 
+6. The user adjusts the severity threshold by dragging or selecting their preferred severity level. 
+7. The user selects or modifies the preferred warning response for the selected trigger. 
+8. The user repeats steps 4–7 for any other selected triggers they wish to configure. 
+9. The user saves their changes. 
+10. The system validates the selections and saves the updated trigger categories, severity thresholds, and warning response preferences to the user's profile.
 
 **Extensions:**
 - **3a.** User has no changes they want to make or undo their changes.
   1. The system retains previous profile settings, disregarding unsaved changes.
   2. The use case ends with the existing profile remaining unchanged.
-- **5a.** The system could not save any changes.
+- **6a.** User did not configure the severity threshold of the trigger.
+  1. The system prompts user to select severity threshold. 
+  2. User adjusts the threshold or cancels the changes entirely. 
+- **7a.** User did not select a warning response to the trigger.
+  1. The system prompts user to choose one of the warning responses.
+  2. User chooses a warning response for that trigger or cancels the changes entirely.
+- **10a.** The system could not save any changes.
   1. The system informs the user that the change could not be saved. (Ex. This could be due to connection issue.)
-  2. The user can try again.
-
-### Use Case 4: Viewing and Setting Severity Thresholds for Each Selected Trigger
-**Primary actor:** User wants to adjust certain trigger's severity thresholds in their profile setting.
-
-**Preconditions:**
-- The user is logged into their account.
-- User is looking through their profile settings.
-- User selects a trigger.
-
-**Trigger:** The user is navigating and configuring a trigger's threshold section of profile.
-
-**Success outcome:** The system is make changes to the user's preferred threshold for the selected trigger.
-
-**Main success scenario:**
-1. The user is editing his/her/their threshold for a trigger in profile section.
-2. The user is able to drag/select a preferred threshold. 
-3. The system displays and saves the changes to the user's profile.
-
-**Extensions:**
-- **1a.** No trigger is selected to be edited.
-  1. The system prompts user to select a trigger to edit before configuring the new severity level threshold.
-  2. The use case ends.
-
-### Use Case 5: Viewing and Modifying Trigger Warning Response
-**Primary actor:** User is viewing a selected trigger's warning response in profile setting.
-
-**Preconditions:**
-- The user is logged into their account.
-- User is looking through their profile settings.
-- User selected a trigger.
-
-**Trigger:** The user selects how to the system should respond to the trigger.
-
-**Success outcome:** The system is able to save the preferred warning response to the trigger.
-
-**Main success scenario:**
-1. The user is editing his/her/their trigger profile section.
-2. The system retrieves pre-saved warning response of the selected trigger and displays it.
-3. The user can make changes, selecting to how the system should respond to the trigger.
-4. The system saves the changes to the user's profile.
-
-**Extensions:**
-- **1a.** No trigger is selected to be edited.
-  1. The system prompts user to select a trigger to edit before configuring the new severity level threshold.
-  2. The use case ends.
-- **3a.** The user does not choose a warning response to the trigger.
-  1. The system prompts the user to choose a warning response from a list.
-  2. The user re-selects or cancel changes.
+  2. The system retains previously saved settings.
+  3. The user can try again.
 
 ## 2) Seph — Home Page Search & Profile Overview
 
-### Use Case 6: Search for a Movie
+### Use Case 4: Search for a Movie
 
 **Primary actor:** User searching for a specific movie
 
@@ -223,7 +186,7 @@ _(Draft based on the "My Account" page in the app sketch — Sarina to confirm.)
   3. The system displays only the results that match the selected filters.
   4. If no results match, the system informs the user, who may change or clear the filters.
 
-### Use Case 7: View Profile Overview
+### Use Case 5: View Profile Overview
 
 **Primary actor:** User viewing their profile
 
@@ -259,7 +222,7 @@ _(Draft based on the "My Account" page in the app sketch — Sarina to confirm.)
 
 ## 3) Toby — Selected Movie Page & Movie Metadata
 
-### Use Case 8: View Movie Details
+### Use Case 6: View Movie Details
 _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketch — Toby to confirm.)_
 
 **Primary actor:** User viewing a selected movie
@@ -284,7 +247,7 @@ _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketc
 - **3a.** Some of the movie's details are unavailable.
   1. The system displays the available details and marks the missing ones as unavailable.
 
-### Use Case 9: View Media Warnings Based on Saved Preferences
+### Use Case 7: View Media Warnings Based on Saved Preferences
 
 **Primary actor: User viewing personalized media warnings**
 
@@ -321,7 +284,7 @@ _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketc
 
 ## 4) Catherine — Trigger Warning Timeline & Reviews
 
-### Use Case 10: View and Review Consolidated Trigger Warnings
+### Use Case 8: View and Review Consolidated Trigger Warnings
 
 **Primary actor:** User viewing the selected media
 
@@ -350,7 +313,7 @@ _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketc
   2. The system informs the user that no trigger warnings are currently available.
   3. The use case ends.
 
-### Use Case 11: Submit Trigger Warning Feedback
+### Use Case 9: Submit Trigger Warning Feedback
 
 **Primary actor:** User providing feedback
 
@@ -378,7 +341,7 @@ _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketc
 
 ## 5) Emirhan — Upload Your Own Media
 
-### Use Case 12: Analyze Uploaded Subtitles
+### Use Case 10: Analyze Uploaded Subtitles
 
 **Primary actor: User wanting to see the trigger warnings**
 
@@ -417,7 +380,7 @@ with their categories, timestamps, confidence score, and the ability to accept o
 
 ## 6) Wenxiao — Submit a New Trigger & Review Form
 
-### Use Case 13: Submit Trigger Warning
+### Use Case 11: Submit Trigger Warning
 
 **Primary actor:** User submitting a trigger warning
 
@@ -459,7 +422,7 @@ with their categories, timestamps, confidence score, and the ability to accept o
   2. The user may retry or cancel.
   3. If the user cancels, the use case ends without recording the warning.
 
-### Use Case 14: Create Community Trigger Category
+### Use Case 12: Create Community Trigger Category
 
 **Primary actor:** User creating a community trigger category
 
@@ -499,7 +462,7 @@ with their categories, timestamps, confidence score, and the ability to accept o
   2. The user may retry or cancel.
   3. If the user cancels, the use case ends without creating the category.
 
-### Use Case 15: Comment on a Trigger Warning
+### Use Case 13: Comment on a Trigger Warning
 _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 
 **Primary actor:** User writing a comment about a trigger warning
@@ -533,18 +496,18 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 ## Minimal Viable Product (MVP)
 | Team Member | MVP Use Case |
 |-------------|--------------|
-| Sarina | Viewing and Selecting Current Trigger Categories Available |
-| Sarina | Viewing and Modifying Trigger Warning Response |
-| Sarina | User Creates an Account |
-| Seph | Search for a Movie|
+| Sarina | Create Account |
+| Sarina | Login to an Account |
+| Sarina | Edit Trigger Profile Settings |
+| Seph | Search for a Movie |
 | Seph | View Profile Overview |
-| Toby         | Save Trigger Preferences             |
-| Toby         | Browse Trigger Preferences           |
-| Catherine      | View and Review Consolidated Trigger Warnings             |
-| Catherine       | Submit Trigger Warning Feedback             |
-| Emirhan         | Analyze Uploaded Subtitles             |
+| Toby | Save Trigger Preferences |
+| Toby | Browse Trigger Preferences |
+| Catherine | View and Review Consolidated Trigger Warnings |
+| Catherine | Submit Trigger Warning Feedback |
+| Emirhan | Analyze Uploaded Subtitles |
 | Wenxiao | Submit a New Trigger|
-| Wenxiao    | Review Form             |
+| Wenxiao | Review Form |
 ---
 ## Entities
 ### Entity 1
@@ -566,6 +529,7 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 ---
 ## Notes
 Link to Slides: https://docs.google.com/presentation/d/17c_46VmWSpbKd_MX34flg0v0Y5wzYPyVLOiRjhtNk8g/edit?usp=sharing
+
 Link to Figma: https://www.figma.com/design/lfOflhqLBI4IXYdahOSp75/CSC207?node-id=0-1&t=gU9uKzAxIxzfKBMN-1
 
 [Any additional project information.]
