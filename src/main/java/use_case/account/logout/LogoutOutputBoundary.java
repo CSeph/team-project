@@ -1,4 +1,4 @@
-package use_case.logout;
+package use_case.account.logout;
 
 /**
  * The output boundary for the Logout Use Case.
