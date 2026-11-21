@@ -1,6 +1,6 @@
-package interface_adapter.logout;
+package interface_adapter.account.logout;
 
-import use_case.logout.LogoutInputBoundary;
+import use_case.account.logout.LogoutInputBoundary;
 
 /**
  * The controller for the Logout Use Case.
