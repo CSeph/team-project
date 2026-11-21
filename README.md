@@ -36,7 +36,10 @@ The readme should include information such as:
 - As a user, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
 - As a user, I want to submit feedback on the accuracy of a trigger warning so that I can help improve the reliability of warnings for other users.
 ### _Emirhan_
-- user stories here
+- As a user, I want to upload subtitle files for my movies so that the app can find the trigger warnings I selected.
+- As a user, I want to be able to see when each trigger warning start and end, so that i can skip or prepare myself.
+- As a user, I want to be able to see a confidence score for thr trigger warnings, to see how reliable each of them is.
+- As a user, I want to select which trigger warning that I want to accept or reject.
 ### _Toby_
 - As a user, I want to choose from a spectrum of existing trigger warnings to create personalized content safety
 - As a user, I want to conveniently access my preferences in triggers selection
@@ -44,8 +47,9 @@ The readme should include information such as:
 
 ------
 ## Use Cases
-Use cases are grouped by team member, following the numbering in the app sketch legend:
-1) Sarina 2) Seph 3) Toby 4) Catherine 5) Emirhan 6) Wenxiao
+Use cases are grouped by team member, following the numbering in the app sketch legend: 
+
+(1) Sarina (2) Seph (3) Toby (4) Catherine (5) Emirhan (6) Wenxiao
 
 ## 1) Sarina — My Account & Edit Profile Settings
 
@@ -379,15 +383,37 @@ _(Draft based on the "Selected Movie Page" and "Metadata" parts of the app sketc
 **Primary actor: User wanting to see the trigger warnings**
 
 **Preconditions:**
+- The user has a subtitle file (SRT) for the media
+- The user has selected the categories of triggers they want in their profile
 
-**Trigger:** 
 
-**Success outcome:** 
+**Trigger:** The user uploads the subtitle file for analyze.
+
+**Success outcome:** The system displays the potential triggers according to the user's selected triggers, 
+with their categories, timestamps, confidence score, and the ability to accept or reject.
 
 **Main success scenario:**
+1. The user uploads an SRT subtitle file.
+2. The system parses the file into timestamped caption segments.
+3. The system retrieves the user's selected triggers.
+4. The system checks each caption segment for the user's selected triggers.
+5. The system displays the potential triggers in time order, marked as potential rather than guaranteed.
+6. The user accepts or rejects each potential trigger.
+7. The system keeps the accepted triggers as warnings for the media.
+
 
 **Extensions:**
-
+- **1a.** The file cannot be read.
+  1. The system informs the user that the file could not be opened.
+  2. The user can upload another file.
+- **2a.** The file is not a valid SRT file (e.g., malformed timestamps).
+  1. The system informs the user that the file format is invalid or not supported.
+  2. The use case ends.
+- **3a.** The user has not selected any triggers.
+  1. The system checks for all available trigger categories instead.
+- **4a.** No potential triggers are found.
+  1. The system informs the user that no potential triggers were found.
+  2. The use case ends.
 
 ## 6) Wenxiao — Submit a New Trigger & Review Form
 
@@ -516,7 +542,7 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 | Toby         | Browse Trigger Preferences           |
 | Catherine      | View and Review Consolidated Trigger Warnings             |
 | Catherine       | Submit Trigger Warning Feedback             |
-| Emirhan         | Upload Your Own Media             |
+| Emirhan         | Analyze Uploaded Subtitles             |
 | Wenxiao | Submit a New Trigger|
 | Wenxiao    | Review Form             |
 ---
@@ -536,8 +562,10 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 ---
 ## How to Run
 [Instructions for running the program.]
+
 ---
 ## Notes
 Link to Slides: https://docs.google.com/presentation/d/17c_46VmWSpbKd_MX34flg0v0Y5wzYPyVLOiRjhtNk8g/edit?usp=sharing
 Link to Figma: https://www.figma.com/design/lfOflhqLBI4IXYdahOSp75/CSC207?node-id=0-1&t=gU9uKzAxIxzfKBMN-1
+
 [Any additional project information.]
