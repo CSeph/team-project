@@ -1,4 +1,4 @@
-package use_case.login;
+package use_case.account.login;
 
 /**
  * The output boundary for the Login Use Case.
