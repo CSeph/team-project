@@ -1,12 +1,13 @@
 package entity;
 
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class UserTriggerProfile {
+public final class TriggerProfile {
 
     private final Map<TriggerCategory, TriggerPreference> preferences;
 
-    public UserTriggerProfile() {
+    public TriggerProfile() {
         this.preferences = new HashMap<>();
     }
 
@@ -15,7 +16,7 @@ public final class UserTriggerProfile {
     }
 
     public void removePreference(TriggerCategory category){
-        preferences.remove(category)
+        preferences.remove(category);
     }
 
     public Map<TriggerCategory, TriggerPreference> getPreferences(){
