@@ -1,4 +1,4 @@
-package entity;
+package entity.account;
 
 /**
  * A simple entity representing a user. Users have a username and password..

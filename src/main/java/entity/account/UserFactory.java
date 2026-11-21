@@ -1,4 +1,4 @@
-package entity;
+package entity.account;
 
 /**
  * Factory for creating CommonUser objects.
