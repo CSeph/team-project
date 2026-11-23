@@ -29,9 +29,9 @@ The readme should include information such as:
 - As a user, I want to see an overview of my profile, including my trigger preferences, thresholds, reviews, and saved movies, so that I can review my settings and activity in one place.
 - As a user, I want to hide search results that contain triggers above my chosen thresholds so that I only see movies I am comfortable watching.
 ### _Wenxiao_
-- As a user, I want to submit a trigger warning for a selected piece of media, including its category, timestamps, severity, and description, so that I can help other users identify potentially triggering content.
+- As a user, I want to submit a trigger warning for a selected piece of media so that I can help other users identify potentially triggering content.
 - As a user, I want to create a new community trigger category when none of the existing categories accurately describes the content I want to report, so that I can submit more accurate trigger warnings.
-- As a user, I want to review existing trigger warnings and provide feedback on their accuracy, so that I can help improve the reliability of community-submitted warnings.
+- As a user, I want to comment on an existing trigger warning so that I can share additional information or context that may help other users better understand the warning.
 ### _Catherine_
 - As a user, I want to see a single consolidated warning for each trigger event so that I can understand what happens without having to read multiple reports of the same event.
 - As a user, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
@@ -424,8 +424,7 @@ with their categories, timestamps, confidence score, and the ability to accept o
 
 **Preconditions:**
 
-- The user has searched for and selected a piece of media.
-- The selected media exists in the system.
+- The user has selected a piece of media that exists in the system.
 - The system has a list of available trigger categories.
 
 **Trigger:** The user chooses to submit a trigger warning for the selected media.
@@ -459,6 +458,10 @@ with their categories, timestamps, confidence score, and the ability to accept o
   1. The system informs the user that the submission was unsuccessful.
   2. The user may retry or cancel.
   3. If the user cancels, the use case ends without recording the warning.
+  
+- **6a.** The user cancels the submission.
+  1. The system does not record a new trigger warning.
+  2. The use case ends.
 
 ### Use Case 14: Create Community Trigger Category
 
@@ -467,7 +470,6 @@ with their categories, timestamps, confidence score, and the ability to accept o
 **Preconditions:**
 
 - The user has access to the available trigger categories.
-- The existing categories do not accurately describe the triggering content the user wants to report.
 
 **Trigger:** The user chooses to create a new community trigger category.
 
@@ -486,7 +488,10 @@ with their categories, timestamps, confidence score, and the ability to accept o
 9. The new category becomes available for selection when submitting trigger warnings.
 
 **Extensions:**
-
+- **4a.** The user cancels category creation.
+  1. The system does not create a new category.
+  2. The use case ends.
+  
 - **5a.** The category name or description is missing or invalid.
   1. The system informs the user of the missing or invalid information.
   2. The user corrects the information and resubmits the form.
@@ -501,34 +506,43 @@ with their categories, timestamps, confidence score, and the ability to accept o
   3. If the user cancels, the use case ends without creating the category.
 
 ### Use Case 15: Comment on a Trigger Warning
-_(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 
-**Primary actor:** User writing a comment about a trigger warning
+**Primary actor:** User commenting on an existing trigger warning
 
 **Preconditions:**
+
 - The user is logged into their account.
-- The user is viewing the reviews of a consolidated trigger warning.
+- The selected trigger warning exists in the system.
+- The user is viewing the selected trigger warning.
 
-**Trigger:** The user selects "Add Comment" for a trigger warning.
+**Trigger:** The user chooses to comment on a trigger warning.
 
-**Success outcome:** The user's comment is saved and displayed under the selected trigger warning.
+**Success outcome:** The user's comment is successfully saved and associated with the selected trigger warning.
 
 **Main success scenario:**
-1. The user selects "Add Comment" for a trigger warning.
-2. The system displays the review form.
-3. The user writes their comment.
+
+1. The user chooses to add a comment to an existing trigger warning.
+2. The system allows the user to enter a comment.
+3. The user provides the comment content.
 4. The user submits the comment.
-5. The system validates the comment.
+5. The system validates the submitted content.
 6. The system saves the comment and associates it with the selected trigger warning.
-7. The system displays the comment under the trigger warning.
+7. The system confirms the submission and displays the comment.
 
 **Extensions:**
-- **5a.** The comment is empty or too long.
-  1. The system informs the user what needs to be fixed.
-  2. The user edits the comment and resubmits it.
+
+- **4a.** The user cancels the comment submission.
+  1. The system does not save a new comment.
+  2. The use case ends.
+
+- **5a.** The comment is empty or exceeds the permitted length.
+  1. The system informs the user of the invalid content.
+  2. The user may correct the comment and resubmit it.
+
 - **6a.** The system cannot save the comment.
   1. The system informs the user that the comment could not be submitted.
-  2. The system keeps the written comment so the user can retry or cancel.
+  2. The user may retry or cancel.
+  3. If the user cancels, the use case ends without saving the comment.
 
 ---
 ## Minimal Viable Product (MVP)
@@ -544,8 +558,8 @@ _(Draft based on the "Review Form" in the app sketch — Wenxiao to confirm.)_
 | Catherine      | View and Review Consolidated Trigger Warnings             |
 | Catherine       | Submit Trigger Warning Feedback             |
 | Emirhan         | Analyze Uploaded Subtitles             |
-| Wenxiao | Submit a New Trigger|
-| Wenxiao    | Review Form             |
+| Wenxiao | Submit Trigger Warning (Use Case 13) |
+| Wenxiao | Comment on a Trigger Warning (Use Case 15) |
 ---
 ## Entities
 ### Entity 1
