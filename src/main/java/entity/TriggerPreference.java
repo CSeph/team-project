@@ -3,14 +3,17 @@ package entity;
 public final class TriggerPreference {
 
     private final TriggerCategory category;
-    private final int severityThreshold;
-    private final String warningResponse;
+    private final SeverityThreshold severityThreshold;
+    private final WarningResponse warningResponse;
 
-    public TriggerPreference(TriggerCategory category, int severityThreshold, String warningResponse) {
+    public TriggerPreference(TriggerCategory category, SeverityThreshold severityThreshold, WarningResponse warningResponse) {
         if (category == null) {
             throw new IllegalArgumentException("The trigger category cannot be null.");
         }
-        if (warningResponse == null || !isValidWarningResponse(warningResponse)) {
+        if (warningResponse == null) {
+            throw new IllegalArgumentException("The warning response to the trigger is invalid.");
+        }
+        if (severityThreshold == null) {
             throw new IllegalArgumentException("The warning response to the trigger is invalid.");
         }
 
@@ -31,11 +34,11 @@ public final class TriggerPreference {
         return category;
     }
 
-    public int getSeverityThreshold() {
+    public SeverityThreshold getSeverityThreshold() {
         return severityThreshold;
     }
 
-    public String getWarningResponse() {
+    public WarningResponse getWarningResponse() {
         return warningResponse;
     }
 }
