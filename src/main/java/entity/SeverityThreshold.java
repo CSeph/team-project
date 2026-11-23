@@ -1,6 +1,6 @@
 package entity;
 
-public enum SevertityThreshold {
+public enum SeverityThreshold {
     LOW,
     MEDIUM,
     HIGH
