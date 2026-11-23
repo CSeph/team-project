@@ -3,6 +3,7 @@ package data_access;
 
 import entity.CaptionSegment;
 import use_case.analyze.CaptionSource;
+import use_case.analyze.InvalidCaptionFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,19 @@ public class SrtCaptionSource implements CaptionSource {
     List<CaptionSegment> parse(List<String> lines) {
         List<CaptionSegment> segments = new ArrayList<>();
 
-        for (int i=0; i < lines.size(); i++) {
+        for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
 
             if (line.contains("-->")) {
                 String[] times = line.split("-->");
-                long start = parseTimestamp(times[0]);
-                long end = parseTimestamp(times[1]);
+                long start;
+                long end;
+                try {
+                    start = parseTimestamp(times[0]);
+                    end = parseTimestamp(times[1]);
+                } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                    throw new InvalidCaptionFileException("bad timestamp line: " + line.trim());
+                }
 
                 StringBuilder text = new StringBuilder();
                 i++;
@@ -38,17 +45,20 @@ public class SrtCaptionSource implements CaptionSource {
                 while ((i < lines.size()) && (!lines.get(i).isBlank())) {
                     if (text.length() > 0) {
                         text.append(" ");
-
                     }
                     text.append(lines.get(i).trim());
                     i++;
                 }
-                segments.add(new CaptionSegment(start, end, text.toString()));
+
+                try {
+                    segments.add(new CaptionSegment(start, end, text.toString()));
+                } catch (IllegalArgumentException e) {
+                    throw new InvalidCaptionFileException("caption ends before it starts: " + line.trim());
+                }
             }
         }
         return segments;
     }
-
     private long parseTimestamp(String timestamp) {
         String[] parts = timestamp.trim().split(":");
 

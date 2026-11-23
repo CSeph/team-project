@@ -3,6 +3,8 @@ package data_access;
 import entity.CaptionSegment;
 import org.junit.jupiter.api.Test;
 
+import use_case.analyze.InvalidCaptionFileException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -41,6 +43,14 @@ class SrtCaptionSourceTest {
 
         assertEquals("I heard a gunshot outside the house.", segment.getText());
 
+    }
+
+    @Test
+    void malformedTimestampThrowsInvalidCaptionFile() {
+        List<String> lines = List.of("1", "00:00:xx,000 --> 00:00:02,000", "Hello");
+
+        assertThrows(InvalidCaptionFileException.class,
+                () -> new SrtCaptionSource().parse(lines));
     }
 }
 
