@@ -26,8 +26,9 @@ The readme should include information such as:
 ### _Joseph_
 - user stories here
 ### _Wenxiao_
-- As a user, I want to submit a trigger warning for a selected piece of media so that I can help other users know when potentially difficult content occurs.
-- As a user, I want to create a community trigger category when none of the existing categories accurately describe the content I want to report, so that I can submit a more accurate trigger warning.
+- As a user, I want to submit a trigger warning for a selected piece of media, including its category, timestamps, severity, and description, so that I can help other users identify potentially triggering content.
+- As a user, I want to create a new community trigger category when none of the existing categories accurately describes the content I want to report, so that I can submit more accurate trigger warnings.
+- As a user, I want to review existing trigger warnings and provide feedback on their accuracy, so that I can help improve the reliability of community-submitted warnings.
 ### _Catherine_
 - As a user, I want to see a single consolidated warning for each trigger event so that I can understand what happens without having to read multiple reports of the same event.
 - As a user, I want to see a confidence score for each trigger warning so that I can judge how reliable the warning is.
@@ -382,7 +383,7 @@ The readme should include information such as:
 | Sarina | Viewing and Modifying Trigger Warning Response |
 | Sarina | User Creates an Account |
 | Joseph | Use Case 2 |
-| Wenxiao | Use Case 3 |
+| Wenxiao | Use Case 10, 11 |
 | Catherine | View and Review Consolidated Trigger Warnings |
 | Catherine | Submit Trigger Warning Feedback |
 | Emirhan | Use Case 5 |
