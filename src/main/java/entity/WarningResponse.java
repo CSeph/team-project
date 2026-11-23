@@ -1,4 +1,7 @@
 package entity;
 
-public class WarningResponse {
+public enum WarningResponse {
+    SHOW_WARNING,
+    SKIP_CONTENT,
+    MUTE_CONTENT
 }
