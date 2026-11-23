@@ -3,6 +3,7 @@ package interface_adapter.account.login;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.account.logged_in.LoggedInState;
 import interface_adapter.account.logged_in.LoggedInViewModel;
+import interface_adapter.search_movie.SearchMovieViewModel;
 import use_case.account.login.LoginOutputBoundary;
 import use_case.account.login.LoginOutputData;
 
@@ -34,8 +35,8 @@ public class LoginPresenter implements LoginOutputBoundary {
         this.loginViewModel.setState(new LoginState());
         this.loginViewModel.notifyStateChanged();
 
-        // switch to the logged in view
-        this.viewManagerModel.setState(LoggedInViewModel.VIEW_NAME);
+        // switch to the home (search) page
+        this.viewManagerModel.setState(SearchMovieViewModel.VIEW_NAME);
         this.viewManagerModel.notifyViewChanged();
     }
 

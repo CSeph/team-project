@@ -31,6 +31,23 @@ import view.LoginView;
 import view.SignupView;
 import view.ViewManager;
 
+import data_access.movie.InMemoryMovieDataAccessObject;
+import data_access.movie.SampleMovies;
+import data_access.profile.InMemoryProfileDataAccessObject;
+import data_access.profile.LoggedInUserProfileDataAccessObject;
+import interface_adapter.navigation.ViewManagerSwitcher;
+import interface_adapter.navigation.ViewSwitcher;
+import interface_adapter.profile_overview.ProfileOverviewController;
+import interface_adapter.profile_overview.ProfileOverviewPresenter;
+import interface_adapter.profile_overview.ProfileOverviewViewModel;
+import interface_adapter.search_movie.SearchMovieController;
+import interface_adapter.search_movie.SearchMoviePresenter;
+import interface_adapter.search_movie.SearchMovieViewModel;
+import use_case.mainpage_overview.OverviewInteractor;
+import use_case.search_movie.SearchMovieInteractor;
+import view.ProfileOverviewView;
+import view.SearchMovieView;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -53,6 +70,11 @@ public class AppBuilder {
     private LoggedInViewModel loggedInViewModel;
     private LoggedInView loggedInView;
     private LoginView loginView;
+    private SearchMovieViewModel searchMovieViewModel;
+    private SearchMovieView searchMovieView;
+    private ProfileOverviewViewModel profileOverviewViewModel;
+    private ProfileOverviewView profileOverviewView;
+    private final ViewSwitcher viewSwitcher = new ViewManagerSwitcher(viewManagerModel);
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -126,6 +148,57 @@ public class AppBuilder {
         final LogoutController logoutController = new LogoutController(logoutInteractor);
         loggedInView.setLogoutController(logoutController);
         return this;
+    }
+
+    public AppBuilder addSearchMovieView() {
+        searchMovieViewModel = new SearchMovieViewModel();
+        searchMovieView = new SearchMovieView(searchMovieViewModel);
+        searchMovieView.setMovieSelectedAction(movieId -> showComingSoon("Movie Details (Toby)"));
+        searchMovieView.setUploadAction(() -> showComingSoon("Upload Your Own Media (Emirhan)"));
+        cardPanel.add(searchMovieView, SearchMovieViewModel.VIEW_NAME);
+        return this;
+    }
+
+    public AppBuilder addProfileOverviewView() {
+        profileOverviewViewModel = new ProfileOverviewViewModel();
+        profileOverviewView = new ProfileOverviewView(profileOverviewViewModel);
+        profileOverviewView.setMovieSelectedAction(
+                movieId -> showComingSoon("Movie Details (Toby)"));
+        profileOverviewView.setManagePreferencesAction(
+                () -> showComingSoon("Edit Profile Settings (Sarina)"));
+        profileOverviewView.setSignOutAction(
+                () -> showComingSoon("Sign Out (LogoutPresenter is not finished yet)"));
+        cardPanel.add(profileOverviewView, ProfileOverviewViewModel.VIEW_NAME);
+        return this;
+    }
+
+    public AppBuilder addSearchMovieUseCase() {
+        final SearchMoviePresenter presenter = new SearchMoviePresenter(searchMovieViewModel);
+        final SearchMovieInteractor interactor = new SearchMovieInteractor(
+                new InMemoryMovieDataAccessObject(SampleMovies.all()), presenter);
+        final SearchMovieController controller = new SearchMovieController(interactor);
+        searchMovieView.setSearchMovieController(controller);
+        controller.loadFilterOptions();
+        return this;
+    }
+
+    public AppBuilder addProfileOverviewUseCase() {
+        final ProfileOverviewPresenter presenter =
+                new ProfileOverviewPresenter(profileOverviewViewModel, viewSwitcher);
+        final OverviewInteractor interactor = new OverviewInteractor(
+                new LoggedInUserProfileDataAccessObject(userDataAccessObject,
+                        InMemoryProfileDataAccessObject.withSampleUser()),
+                presenter);
+        final ProfileOverviewController controller = new ProfileOverviewController(interactor);
+        profileOverviewView.setProfileOverviewController(controller);
+        searchMovieView.setProfileOverviewController(controller);
+        return this;
+    }
+
+    private void showComingSoon(String screenName) {
+        JOptionPane.showMessageDialog(cardPanel,
+                "The " + screenName + " screen is not connected yet.",
+                "Coming soon", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public JFrame build() {
