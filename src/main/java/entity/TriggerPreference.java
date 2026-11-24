@@ -5,6 +5,7 @@ public final class TriggerPreference {
     private final TriggerCategory category;
     private final SeverityThreshold severityThreshold;
     private final WarningResponse warningResponse;
+    private boolean isSelected;
 
     public TriggerPreference(TriggerCategory category, SeverityThreshold severityThreshold, WarningResponse warningResponse) {
         if (category == null) {
@@ -14,12 +15,13 @@ public final class TriggerPreference {
             throw new IllegalArgumentException("The warning response to the trigger is invalid.");
         }
         if (severityThreshold == null) {
-            throw new IllegalArgumentException("The warning response to the trigger is invalid.");
+            throw new IllegalArgumentException("The severity threshold to the trigger is invalid.");
         }
 
         this.category = category;
         this.severityThreshold = severityThreshold;
         this.warningResponse = warningResponse;
+        this.isSelected = false;
     }
 
     private boolean isValidSeverity(String severityThreshold) {
@@ -40,5 +42,13 @@ public final class TriggerPreference {
 
     public WarningResponse getWarningResponse() {
         return warningResponse;
+    }
+
+    public void deselect() {
+        isSelected = false;
+    }
+
+    public void selected(){
+        isSelected = true;
     }
 }
