@@ -3,20 +3,25 @@ package entity;
 public final class TriggerPreference {
 
     private final TriggerCategory category;
-    private final int severityThreshold;
-    private final String warningResponse;
+    private final SeverityThreshold severityThreshold;
+    private final WarningResponse warningResponse;
+    private boolean isSelected;
 
-    public TriggerPreference(TriggerCategory category, int severityThreshold, String warningResponse) {
+    public TriggerPreference(TriggerCategory category, SeverityThreshold severityThreshold, WarningResponse warningResponse) {
         if (category == null) {
             throw new IllegalArgumentException("The trigger category cannot be null.");
         }
-        if (warningResponse == null || !isValidWarningResponse(warningResponse)) {
+        if (warningResponse == null) {
             throw new IllegalArgumentException("The warning response to the trigger is invalid.");
+        }
+        if (severityThreshold == null) {
+            throw new IllegalArgumentException("The severity threshold to the trigger is invalid.");
         }
 
         this.category = category;
         this.severityThreshold = severityThreshold;
         this.warningResponse = warningResponse;
+        this.isSelected = false;
     }
 
     private boolean isValidSeverity(String severityThreshold) {
@@ -31,11 +36,19 @@ public final class TriggerPreference {
         return category;
     }
 
-    public int getSeverityThreshold() {
+    public SeverityThreshold getSeverityThreshold() {
         return severityThreshold;
     }
 
-    public String getWarningResponse() {
+    public WarningResponse getWarningResponse() {
         return warningResponse;
+    }
+
+    public void deselect() {
+        isSelected = false;
+    }
+
+    public void selected(){
+        isSelected = true;
     }
 }
